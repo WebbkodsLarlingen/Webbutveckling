@@ -1,66 +1,57 @@
-<!DOCTYPE html>  <!-- Berättar för Webbläsare om vilken filtyp att vänta sig? Ens nödvändigt? -->
-<html>          <!-- Här börjar HTML-koden? -->
-    <head>      <!-- Detta syns INTE inuti webbfönstret? -->
-        <!-- Teckenuppsättning? -->
-        <meta charset="UTF-8">      
-        <!-- SEO Description -->
-        <meta name="description" content="Webbutveckling för nybörjare"> 
-        <!-- SEO Keywords -->
-        <meta name="keywords" content="Webbutveckling för nybörjare, Webbutveckling, HTML, CSS, JavaScript"> 
-        <!-- SEO för författare? -->
-        <meta name="author" content="WebbutvecklingsLärlingen"> 
-        <!-- initial-scale påverkar zoom-funktionen i webbläsare? -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <style> /* Så här måste jag kommentera efter <Style> Här inne ligger CSS-kod */ 
-        .container1 {  /* Jag försöker centrera en div medan innehållet går från vänster->höger  */ 
-            position: absolute; /* Lösning här: https://www.youtube.com/watch?v=njdJeu95p6s&ab_channel=Fireship */
-            top: 50%; /* Förflytta allt 50% från toppvänster och sedan */
-            left: 50%;
-            transform: translate(-50%, -50%); /* Förflytta igen 50%? men baklänges */
-            background-color: bisque; /* Så jag ser hur stor div är */
-            padding: 10px;
-        }
-        .container2 /* Flex-varianten av centrering av en div, från samma YT */
-        {
-            display: flex; /* Flex vad? */
-            align-items: center;  /* Vad klassas som "items" i detta fall? SVAR: Verkar vara html-element inuti själva diven */ 
-            flex-direction: row-reverse; /* flex-direction säger i vilken ordning html-elementen skall visas */
-            justify-content: center; /* Hur skiljer sig "content" från "items"? */
-            background-color: bisque; /* Så jag ser hur stor div är */
-            /* Flex-varianten fungerar inte, fattas någon övrig kod som måste köras samtidigt? */
-        }
-        .container3 /* Grid-varianten för div-centrering, samma YT */
-        {
-            display: grid; /* Visa som ett fält? */
-            place-items: center; /* Vad klassas "items" och inte? */
-            background-color: bisque; /* Så jag ser hur stor div är */
-            /* Grid-varianten centerar tyvärr allt högst upp och inte som container1 som gör allt rätt */
-        }
-        /* Måste lära mig mer om display:, "content" och "items" */
-        h1 { /* Visuellt "smink" för h1 */
+<!DOCTYPE html>
+<html lang="se">
+<head>
+    <title>Sveriges Radio</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />   
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
+</head>
 
-        }
-        p { /* Visuellt "smink" för p */
+<body>
+    <header id="mainheader">
+        <div class="contain">
+            <h1 id="logo">DT084G - Projekt</h1>
 
-        }
-        </style> <!-- Jag får ej kommentera med HTML-kommentarstecken direkt efter <style>? -->
-    </head>
-    <!-- Här börjar HTML-kod som syns inuti webbfönstret? -->
-    <body>      
-        <div class="container1"> <!-- Första div ska tolkas som "container" om man vill centrera allt innehåll? -->
-            <h1>Är min första div centrerad nu?</h1>
-            <p>Denna paragraf ska vara under h1 och inte höger om den!</p>
-            <p>Vad händer då med den andra paragrafen?</p>
-            <p>En tredje paragraf? Varför följer de varann på led?</p>
-            <p>Vad är det som händer med alla element...</p>
-            <p>Det är bara Container1 som får allt innehåll att centrera sig 
-            som det ska och gå från vänster till höger. En sak jag såg i ett
-            annat YT-klipp är att man kan skriva paragrafer så här utan att 
-            HTML blir sur på att man försöker radbryta. Detta är så texten
-            här blir lättare att läsa.</p>
-            <a href="JonDuckett-HTMLCSSDesign.html">Klicka här för att gå till <!-- Länk till HTML-fil för övningar i kursbok-->
-                Övningarna för JonDuckett HTML CSS & Design-boken</a>
+            <section id="player">
+                <select id="playchannel" class="form-control"></select>
+                <button id="playbutton" class="btn btn-primary">Spela</button>
+            </section>
+            <!-- /#search -->
         </div>
+        <!-- /.contain -->
+    </header>
 
-    </body>
-</html> <!-- Slut på HTML-kod? -->
+    <div class="container">
+        <h2>SR - Sveriges Radio</h2>
+        <div class="left">
+            <section class="clist">
+                <h3>Bläddra via kanal</h3>
+                <nav id="mainnav">
+                    <ul id="mainnavlist"></ul>
+                    <div class="spacer" id="shownumrows">
+                        <label for="numrows">Max antal: </label><input type="number" id="numrows" value="10" min="1" max="2000">&nbsp;&nbsp;
+                    </div>
+                </nav>
+            </section>
+            <!-- /#lan -->
+        </div>
+        <!-- /.left -->
+
+        <div class="right">
+            <div id="info"></div>
+            <!-- /#info -->
+        </div>
+        <!-- /.right -->
+
+        <footer>
+            <p>Projektuppgift för kursen DT084G, Introduktion till programmering med JavaScript.</p>
+
+            <div id="radioplayer"></div>
+        </footer>
+    </div>
+    <!-- /.container -->
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
